@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .quote-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 50px;
+        }
+        #quote-text {
+            font-size: 24px;
+            font-style: italic;
+        }
+        #quote-author {
+            font-size: 18px;
+            text-align: right;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="quote-container">
+                    <h1 class="text-center mb-4">Quote Generator</h1>
+                    <div id="quote-text"></div>
+                    <div id="quote-author"></div>
+                    <button id="new-quote" class="btn btn-primary mt-3">New Quote</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const quotes = [
+            { text: "Be the change you wish to see in the world.", author: "Mahatma Gandhi" },
+            { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+            { text: "In three words I can sum up everything I've learned about life: it goes on.", author: "Robert Frost" },
+            { text: "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.", author: "Ralph Waldo Emerson" },
+            { text: "Two roads diverged in a wood, and I—I took the one less traveled by, And that has made all the difference.", author: "Robert Frost" }
+        ];
+
+        const quoteText = document.getElementById("quote-text");
+        const quoteAuthor = document.getElementById("quote-author");
+        const newQuoteBtn = document.getElementById("new-quote");
+
+        function getRandomQuote() {
+            return quotes[Math.floor(Math.random() * quotes.length)];
+        }
+
+        function displayQuote() {
+            const quote = getRandomQuote();
+            quoteText.textContent = `"${quote.text}"`;
+            quoteAuthor.textContent = `- ${quote.author}`;
+        }
+
+        newQuoteBtn.addEventListener("click", displayQuote);
+
+        // Display initial quote
+        displayQuote();
+    </script>
+</body>
+</html>
